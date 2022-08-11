@@ -1,0 +1,110 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type='number'] {
+  -moz-appearance: textfield;
+}
+
+.s0 {
+  fill: #42e8e0;
+}
+.s1 {
+  fill: url(#g1);
+}
+.s2 {
+  fill: #24126a;
+}
+.s3 {
+  fill: #ffffff;
+}
+.s4 {
+  opacity: 0.5;
+  fill: #453c9e;
+}
+.s5 {
+  opacity: 0.8;
+  fill: url(#g2);
+}
+.s6 {
+  opacity: 0.5;
+  fill: url(#g3);
+}
+.s7 {
+  fill: #9ffff8;
+}
+.s8 {
+  opacity: 0.4;
+  fill: #24126a;
+}
+.s9 {
+  fill: url(#g4);
+}
+.s10 {
+  opacity: 0.3;
+  fill: #0f054c;
+}
+.s11 {
+  fill: url(#g5);
+}
+.s12 {
+  fill: #0f054c;
+}
+.s13 {
+  opacity: 0.4;
+  fill: #42e8e0;
+}
+.s14 {
+  fill: url(#g6);
+}
+.s15 {
+  fill: url(#g7);
+}
+.s16 {
+  fill: url(#g8);
+}
+.s17 {
+  fill: url(#g9);
+}
+.s18 {
+  fill: url(#g10);
+}
+.s19 {
+  fill: url(#g11);
+}
+.s20 {
+  fill: #5351af;
+}
+.s21 {
+  fill: url(#g12);
+}
+.s22 {
+  fill: url(#g13);
+}
+.s23 {
+  fill: url(#g14);
+}
+.s24 {
+  fill: url(#g15);
+}
+.s25 {
+  fill: url(#g16);
+}
+.s26 {
+  fill: url(#g17);
+}
+.s27 {
+  opacity: 0.5;
+  fill: url(#g18);
+}
+.s28 {
+  opacity: 0.2;
+  fill: #42e8e0;
+}
