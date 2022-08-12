@@ -1,4 +1,4 @@
-import React, { InputHTMLAttributes, ReactNode } from 'react';
+import React, { InputHTMLAttributes, ReactElement, ReactNode } from 'react';
 import { useField, useFormikContext } from 'formik';
 
 import { FieldError, FieldLabel, FormControl } from '../form-control';
@@ -11,8 +11,8 @@ type InputFieldProps = InputHTMLAttributes<HTMLInputElement> & {
   autoComplete?: 'on' | 'off';
   isRequired?: boolean;
   formatter?(value: string): string;
-  suffix?: ReactNode | string | null;
   validate?: (value: any) => string | undefined;
+  leftIcon?: ReactElement | null;
   formatOptions?: {
     on: 'blur' | 'change';
   };
@@ -25,8 +25,8 @@ export const InputField: React.FC<InputFieldProps> = ({
   autoComplete = 'off',
   formatter,
   isRequired = false,
-  suffix = null,
   formatOptions = { on: 'change' },
+  leftIcon,
   ...props
 }) => {
   const { setFieldValue, setFieldTouched } = useFormikContext();
@@ -57,16 +57,28 @@ export const InputField: React.FC<InputFieldProps> = ({
     <FormControl isInvalid={isInvalid} isRequired={isRequired}>
       <FieldLabel htmlFor={field.name}>{label}</FieldLabel>
 
-      <input
-        {...field}
-        {...props}
-        id={name}
-        onBlur={onBlur}
-        placeholder={placeholder}
-        autoComplete={autoComplete}
-        className="block w-full rounded-md shadow-sm h-11 sm:h-12 text-base sm:text-lg"
-      />
-
+      <div className="mt-1 relative rounded-md shadow-sm">
+        <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+          {leftIcon || null}
+        </div>
+        <input
+          {...field}
+          {...props}
+          id={name}
+          onBlur={onBlur}
+          placeholder={placeholder}
+          autoComplete={autoComplete}
+          className={`${
+            leftIcon ? 'pl-11' : ''
+          } block w-full rounded-md shadow-sm h-11 sm:h-12 text-base sm:text-lg`}
+        />
+        {/* <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+          <QuestionMarkCircleIcon
+            className="h-5 w-5 text-gray-400"
+            aria-hidden="true"
+          />
+        </div> */}
+      </div>
       <FieldError>{isInvalid ? error : ''}</FieldError>
     </FormControl>
   );

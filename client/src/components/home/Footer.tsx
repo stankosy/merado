@@ -90,7 +90,7 @@ const footerNavigation = {
 
 export const Footer = () => {
   return (
-    <footer className="bg-gray-50" aria-labelledby="footer-heading">
+    <footer className="bg-[#25153a]" aria-labelledby="footer-heading">
       <h2 id="footer-heading" className="sr-only">
         Footer
       </h2>
@@ -114,7 +114,7 @@ export const Footer = () => {
                   href={item.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-400 hover:text-gray-500"
+                  className="text-gray-400 hover:text-[#ff4293]"
                 >
                   <span className="sr-only">{item.name}</span>
                   <item.icon className="h-6 w-6" aria-hidden="true" />

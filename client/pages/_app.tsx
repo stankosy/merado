@@ -19,7 +19,7 @@ import { AppProps } from 'next/app';
 
 function MyApp({ Component, pageProps }: AppProps) {
   // The network can be set to 'devnet', 'testnet', or 'mainnet-beta'.
-  const network = WalletAdapterNetwork.Devnet;
+  const network = WalletAdapterNetwork[process.env.NEXT_PUBLIC_ENV || 'Devnet'];
 
   // You can also provide a custom RPC endpoint.
   const endpoint = useMemo(() => clusterApiUrl(network), [network]);

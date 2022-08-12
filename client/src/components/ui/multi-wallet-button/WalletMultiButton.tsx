@@ -19,6 +19,9 @@ import { WalletModalButton } from './WalletModalButton';
 const className =
   'shadow bg-gradient-to-r from-[#ff4293] to-[#ff9e48] text-white font-medium hover:from-[#ff4293] hover:to-[#ff9e48] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#ff9e48] focus:ring-offset-gray-900';
 
+const classNameWalletButton =
+  'shadow text-white font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#ff9e48] focus:ring-offset-gray-900';
+
 export const WalletMultiButton: FC<ButtonProps> = ({ children, ...props }) => {
   const { publicKey, wallet, disconnect, connected, connecting } = useWallet();
   const { setVisible } = useWalletModal();
@@ -97,15 +100,31 @@ export const WalletMultiButton: FC<ButtonProps> = ({ children, ...props }) => {
   }, [ref, closeDropdown]);
 
   if (!wallet)
-    return <WalletModalButton {...props}>{children}</WalletModalButton>;
+    return (
+      <WalletModalButton
+        {...props}
+        className={`${className} w-full justify-center`}
+      >
+        {'Connect Wallet'}
+      </WalletModalButton>
+    );
   if (!base58)
-    return <WalletConnectButton {...props}>{children}</WalletConnectButton>;
+    return (
+      <WalletConnectButton
+        {...props}
+        className={`${className} w-full justify-center`}
+      >
+        {'Connect Wallet'}
+      </WalletConnectButton>
+    );
 
   return (
     <div className="flex ">
       <Button
         aria-expanded={active}
-        className={`${className} py-3 px-3 flex rounded-full md:rounded-md`}
+        defaultStyle={false}
+        // className={`${className} py-3 px-3 flex rounded-full md:rounded-md`}
+        className={`${classNameWalletButton} bg-[#49266a] py-3 px-3 flex rounded-full md:rounded-md`}
         style={{ pointerEvents: active ? 'none' : 'auto', ...props.style }}
         onClick={openDropdown}
         startIcon={<WalletIcon wallet={wallet} />}
@@ -116,6 +135,7 @@ export const WalletMultiButton: FC<ButtonProps> = ({ children, ...props }) => {
       {connected ? (
         <Button
           aria-expanded={active}
+          defaultStyle={false}
           className={`${className} py-3 px-4 ml-4 hidden md:block rounded-md`}
           style={{ pointerEvents: active ? 'none' : 'auto', marginLeft: 10 }}
           onClick={navigateToStartInvesting}

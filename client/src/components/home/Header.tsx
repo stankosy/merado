@@ -4,12 +4,12 @@ import { WalletMultiButton } from '../ui/multi-wallet-button';
 import { ROUTES } from '../../routes';
 import { useRouter } from 'next/router';
 
-const navigation = [
+/* const navigation = [
   { name: 'Product', href: '#' },
   { name: 'Features', href: '#' },
   { name: 'Marketplace', href: '#' },
   { name: 'Company', href: '#' },
-];
+]; */
 
 export const Header = () => {
   const { push } = useRouter();
@@ -28,8 +28,8 @@ export const Header = () => {
               <div className="cursor-pointer" onClick={navigateToHome}>
                 <span className="sr-only">Merado</span>
                 <img
-                  className="h-8 w-auto sm:h-10"
-                  src="https://res.cloudinary.com/daa9zjpg5/image/upload/v1660239801/merado/merado_icon_xuix07.png"
+                  className="h-10 w-auto sm:h-12"
+                  src="https://res.cloudinary.com/daa9zjpg5/image/upload/v1660241361/merado/merado_title_wmh0xg.png"
                   alt=""
                 />
               </div>
@@ -41,7 +41,7 @@ export const Header = () => {
                 </Popover.Button>
               </div>
             </div>
-            <div className="hidden space-x-8 md:flex md:ml-10">
+            {/* <div className="hidden space-x-8 md:flex md:ml-10">
               {navigation.map((item) => (
                 <a
                   key={item.name}
@@ -51,7 +51,7 @@ export const Header = () => {
                   {item.name}
                 </a>
               ))}
-            </div>
+            </div> */}
           </div>
           <div className="flex md:items-center md:space-x-6">
             <WalletMultiButton />

@@ -6,10 +6,16 @@ import {
   ServerIcon,
   ShieldCheckIcon,
 } from '@heroicons/react/outline';
+import { useWallet } from '@solana/wallet-adapter-react';
+import { useRouter } from 'next/router';
+import { ROUTES } from '../../routes';
 
 import { WalletMultiButton } from '../ui/multi-wallet-button';
 import { Header } from './Header';
 import { PhoneInvestmentSvg } from './PhoneInvestmentSvg';
+
+const className =
+  'shadow bg-gradient-to-r from-[#ff4293] to-[#ff9e48] text-white font-medium hover:from-[#ff4293] hover:to-[#ff9e48] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#ff9e48] focus:ring-offset-gray-900';
 
 /**
  * use this list to render the Why merado cards
@@ -54,6 +60,13 @@ const features = [
 ];
 
 export const MainSection = () => {
+  const { push } = useRouter();
+  const { connected } = useWallet();
+
+  const navigateToStartInvesting = () => push(ROUTES.START_INVESTING);
+
+  const walletButtonClass = connected ? 'hidden' : 'inline-flex';
+
   return (
     <main>
       <div className="pt-10 bg-gradient-radial-at-br from-[#572d7f] to-[#100919] sm:pt-10 lg:pt-8 lg:pb-14 lg:overflow-hidden">
@@ -172,12 +185,22 @@ export const MainSection = () => {
               quisque ut interdum tincidunt duis.
             </p>
             <div className="mt-8">
-              <div className="inline-flex rounded-md shadow">
+              <div className={`rounded-md shadow ${walletButtonClass} `}>
                 <WalletMultiButton />
                 {/* <button className="bg-gradient-to-r from-[#ff4293] to-[#ff9e48] inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-gray-900 bg-white hover:bg-gray-50">
                   Connect wallet
                 </button> */}
               </div>
+              {connected ? (
+                <div className="inline-flex rounded-md shadow w-full">
+                  <button
+                    onClick={navigateToStartInvesting}
+                    className={`${className} py-3 px-4 rounded-md`}
+                  >
+                    Start investing
+                  </button>
+                </div>
+              ) : null}
             </div>
           </div>
         </div>

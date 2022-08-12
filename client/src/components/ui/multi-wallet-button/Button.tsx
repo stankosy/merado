@@ -15,13 +15,17 @@ export type ButtonProps = PropsWithChildren<{
   startIcon?: ReactElement;
   style?: CSSProperties;
   tabIndex?: number;
+  defaultStyle?: boolean;
 }>;
 
-export const Button: FC<ButtonProps> = (props) => {
+export const Button: FC<ButtonProps> = ({ defaultStyle = true, ...props }) => {
+  const defaultClassName = defaultStyle
+    ? `${props.className || ''} wallet-adapter-button`
+    : `${props.className || ''}`;
+
   return (
     <button
-      // className={`${props.className || ''} wallet-adapter-button `}
-      className={`${props.className || ''}`}
+      className={defaultClassName}
       disabled={props.disabled}
       onClick={props.onClick}
       tabIndex={props.tabIndex || 0}
@@ -30,7 +34,7 @@ export const Button: FC<ButtonProps> = (props) => {
       {props.startIcon && (
         <i
           className="wallet-adapter-button-start-icon"
-          style={{ marginRight: 0 }}
+          style={!defaultStyle ? { marginRight: 0 } : {}}
         >
           {props.startIcon}
         </i>
