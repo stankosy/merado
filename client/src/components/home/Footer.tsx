@@ -104,8 +104,7 @@ export const Footer = () => {
               alt="Company name"
             />
             <p className="text-gray-500 text-center sm:text-base">
-              Making the world a better place through constructing elegant
-              hierarchies.
+            The first DeFi protocol that autonomously executes investment strategies on Solana blockchain.
             </p>
             <div className="flex space-x-6">
               {footerNavigation.social.map((item) => (

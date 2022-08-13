@@ -1,10 +1,7 @@
 import {
-  CloudUploadIcon,
-  CogIcon,
   LockClosedIcon,
+  KeyIcon,
   RefreshIcon,
-  ServerIcon,
-  ShieldCheckIcon,
 } from '@heroicons/react/outline';
 import { useWallet } from '@solana/wallet-adapter-react';
 import { useRouter } from 'next/router';
@@ -22,10 +19,10 @@ const className =
  */
 const features = [
   {
-    name: 'Push to Deploy',
+    name: 'Trustless',
     description:
-      'Ac tincidunt sapien vehicula erat auctor pellentesque rhoncus. Et magna sit morbi vitae lobortis.',
-    icon: CloudUploadIcon,
+      'Only you have access to your funds. Deposit or withdraw any time.',
+    icon: KeyIcon,
   },
   {
     name: 'SSL Certificates',
@@ -38,24 +35,6 @@ const features = [
     description:
       'Rerum quas incidunt deleniti quaerat suscipit mollitia. Amet repellendus ut odit dolores qui.',
     icon: RefreshIcon,
-  },
-  {
-    name: 'Advanced Security',
-    description:
-      'Ullam laboriosam est voluptatem maxime ut mollitia commodi. Et dignissimos suscipit perspiciatis.',
-    icon: ShieldCheckIcon,
-  },
-  {
-    name: 'Powerful API',
-    description:
-      'Ab a facere voluptatem in quia corrupti veritatis aliquam. Veritatis labore quaerat ipsum quaerat id.',
-    icon: CogIcon,
-  },
-  {
-    name: 'Database Backups',
-    description:
-      'Quia qui et est officia cupiditate qui consectetur. Ratione similique et impedit ea ipsum et.',
-    icon: ServerIcon,
   },
 ];
 
@@ -78,25 +57,32 @@ export const MainSection = () => {
           <div className="lg:grid lg:grid-cols-2 lg:gap-8">
             <div className="mx-auto max-w-md px-4 sm:max-w-2xl sm:px-6 sm:text-center lg:px-0 lg:text-left lg:flex lg:items-center">
               <div className="lg:py-24">
-                <div className="">
+                {/* <div className="">
                   <span className="sr-only">Merado</span>
                   <img
                     className="h-16 w-auto sm:h-20"
                     src="https://res.cloudinary.com/daa9zjpg5/image/upload/v1660241361/merado/merado_title_wmh0xg.png"
                     alt=""
                   />
-                </div>
+                </div> */}
                 {/* <h1 className="mt-4 text-3xl tracking-tight font-extrabold text-white sm:mt-5 sm:text-4xl lg:mt-6 xl:text-5xl text-left">
                   <span className="block text-[#fa9e45]">Merado</span>
                 </h1> */}
                 <h1 className="mt-2 text-2xl tracking-tight font-extrabold text-[#866e9e] sm:mt-3 sm:text-3xl lg:mt-4 xl:text-4xl text-left">
-                  <span className="block">Systematic Crypto Investing</span>
-                  <span className="pb-3 block bg-clip-text">Made Easy</span>
+                  <span className="block">
+                    Automating Your Crypto Investments
+                  </span>
+                  <span className="pb-3 block bg-clip-text">
+                    While You Asleep
+                  </span>
                 </h1>
                 <p className="text-left text-gray-300 sm:text-xl lg:text-lg xl:text-xl">
-                  Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure
-                  qui Lorem cupidatat commodo. Elit sunt amet fugiat veniam
-                  occaecat fugiat.
+                  Merado is the first DeFi protocol that autonomously detects
+                  and buys in the dips on Solana blockchain!
+                </p>
+                <p className="text-left text-gray-300 sm:text-xl lg:text-lg xl:text-xl">
+                  Even up to 6.5% better average price than regular daily
+                  DCA-ing strategies.
                 </p>
                 <div className="mt-10 sm:mt-12">
                   <div className="sm:flex sm:max-w-xl lg:mx-0">
@@ -122,11 +108,11 @@ export const MainSection = () => {
           <p className="mt-2 text-3xl font-extrabold text-gray-900 tracking-tight sm:text-4xl">
             Why Merado?
           </p>
-          <p className="mt-5 max-w-prose mx-auto text-xl text-gray-500">
+          {/* <p className="mt-5 max-w-prose mx-auto text-xl text-gray-500">
             Phasellus lorem quam molestie id quisque diam aenean nulla in.
             Accumsan in quis quis nunc, ullamcorper malesuada. Eleifend
             condimentum id viverra nulla.
-          </p>
+          </p> */}
           <div className="mt-12">
             <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
               {features.map((feature) => (
@@ -162,6 +148,7 @@ export const MainSection = () => {
           <img
             className="w-full h-full object-cover"
             src="https://res.cloudinary.com/daa9zjpg5/image/upload/v1660239580/merado/candles_soqf6c.png"
+            // src="https://res.cloudinary.com/daa9zjpg5/image/upload/v1660383762/merado/6256458_ibfcnx.jpg"
             // src="https://res.cloudinary.com/daa9zjpg5/image/upload/v1660143480/merado/how_it_works_np3zch.png"
             alt=""
           />
@@ -179,10 +166,9 @@ export const MainSection = () => {
               How it works?
             </p>
             <p className="mt-3 text-lg text-gray-300">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Et,
-              egestas tempus tellus etiam sed. Quam a scelerisque amet
-              ullamcorper eu enim et fermentum, augue. Aliquet amet volutpat
-              quisque ut interdum tincidunt duis.
+              Instead of trying to time the market for the best possible price,
+              Merado takes a systematic aproach autonomously detect and buys in the dips on Solana blockchain. 
+              Comparing to Dollar Cost Averaging (DCA) approach, Merado provides even up to 6.5% better average price. 
             </p>
             <div className="mt-8">
               <div className={`rounded-md shadow ${walletButtonClass} `}>
