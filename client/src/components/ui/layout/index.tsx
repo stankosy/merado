@@ -11,7 +11,7 @@ export const Layout = ({ children }) => {
 
             {/* <div className="h-[90vh] overflow-auto pt-40"></div> */}
             {/* <div className="mx-auto px-2 md:px-8 mt-28 flex flex-col items-center justify-center "> */}
-            <div className="mx-auto px-2 md:px-8 pt-28 min-h-[100vh] flex flex-col items-center justify-center">
+            <div className="mx-auto px-2 md:px-8 pt-0 min-h-[100vh] flex flex-col items-center justify-center">
               {children}
             </div>
           </div>

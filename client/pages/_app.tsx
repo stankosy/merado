@@ -1,6 +1,8 @@
 import '../styles/globals.css';
 
 import { useMemo } from 'react';
+import { AppProps } from 'next/app';
+import Head from 'next/head';
 import {
   ConnectionProvider,
   WalletProvider,
@@ -15,7 +17,6 @@ import { clusterApiUrl } from '@solana/web3.js';
 require('@solana/wallet-adapter-react-ui/styles.css');
 
 import { WalletModalProvider } from '../src/components/ui/multi-wallet-button';
-import { AppProps } from 'next/app';
 
 function MyApp({ Component, pageProps }: AppProps) {
   // The network can be set to 'devnet', 'testnet', or 'mainnet-beta'.
@@ -30,13 +31,18 @@ function MyApp({ Component, pageProps }: AppProps) {
   );
 
   return (
-    <ConnectionProvider endpoint={endpoint}>
-      <WalletProvider wallets={wallets} autoConnect>
-        <WalletModalProvider>
-          <Component {...pageProps} />
-        </WalletModalProvider>
-      </WalletProvider>
-    </ConnectionProvider>
+    <>
+      <Head>
+        <title>Merado</title>
+      </Head>
+      <ConnectionProvider endpoint={endpoint}>
+        <WalletProvider wallets={wallets} autoConnect>
+          <WalletModalProvider>
+            <Component {...pageProps} />
+          </WalletModalProvider>
+        </WalletProvider>
+      </ConnectionProvider>
+    </>
   );
 }
 

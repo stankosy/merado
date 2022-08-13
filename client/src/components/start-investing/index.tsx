@@ -3,6 +3,8 @@ import * as yup from 'yup';
 
 import { MakeDepositForm } from './make-deposit-form';
 
+import { useStartInvesting } from './useStartInvesting';
+
 const initialValues = {
   token_amount: '',
   slots: '',
@@ -39,15 +41,30 @@ const schema = yup.object({
     .required(REQUIRED_FIELD),
   token: yup
     .string()
-    .oneOf(['usdc', 'btc', 'sol'], 'Invalid token')
+    .oneOf(['usdc', 'usdt'], 'Invalid token')
     .required(REQUIRED_FIELD),
 });
 
 export const StartInvesting = () => {
-  const onSubmit = (values, { resetForm }) => {
-    console.log(values);
+  const { checkTokenValidity, getOrCreateTokenAccount, executeTokenTransfer } =
+    useStartInvesting();
 
-    resetForm();
+  const onSubmit = async (values, { resetForm, setErrors }) => {
+    const validWalletTokenAccount = await checkTokenValidity(values, setErrors);
+
+    if (validWalletTokenAccount) {
+      const meradoTokenAccount = await getOrCreateTokenAccount(values.token);
+
+      if (validWalletTokenAccount && meradoTokenAccount) {
+        await executeTokenTransfer(
+          validWalletTokenAccount,
+          meradoTokenAccount,
+          values.token_amount,
+        );
+
+        resetForm();
+      }
+    }
   };
 
   return (
