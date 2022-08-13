@@ -1,4 +1,7 @@
-import { createTransferInstruction, TOKEN_PROGRAM_ID } from '@solana/spl-token';
+import {
+  createTransferInstruction,
+  TOKEN_PROGRAM_ID,
+} from '@solana/spl-token-v2';
 import { Connection, PublicKey, Transaction } from '@solana/web3.js';
 
 export const transferTokens = async (

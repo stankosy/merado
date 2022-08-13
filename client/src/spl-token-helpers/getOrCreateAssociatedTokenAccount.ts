@@ -1,7 +1,7 @@
 import {
   TOKEN_PROGRAM_ID,
   ASSOCIATED_TOKEN_PROGRAM_ID,
-} from '@solana/spl-token';
+} from '@solana/spl-token-v2';
 import { SignerWalletAdapterProps } from '@solana/wallet-adapter-base';
 import {
   Connection,

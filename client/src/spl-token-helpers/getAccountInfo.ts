@@ -1,5 +1,5 @@
 // getAccountInfo.ts
-import { TOKEN_PROGRAM_ID, AccountLayout } from '@solana/spl-token';
+import { TOKEN_PROGRAM_ID, AccountLayout } from '@solana/spl-token-v2';
 import { Connection, PublicKey, Commitment } from '@solana/web3.js';
 
 export enum AccountState {
