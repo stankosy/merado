@@ -10,17 +10,11 @@ export const tokenMaps = {
     iconUrl:
       'https://res.cloudinary.com/daa9zjpg5/image/upload/v1660282221/merado/crypto-icons/usdc_dmxj7n.png',
   },
-  btc: {
-    title: 'BTC',
-    token: 'btc',
+  usdt: {
+    title: 'USDT',
+    token: 'usdt',
     iconUrl:
-      'https://res.cloudinary.com/daa9zjpg5/image/upload/v1660283916/merado/crypto-icons/btc_kpgwtf.png',
-  },
-  sol: {
-    title: 'SOL',
-    token: 'sol',
-    iconUrl:
-      'https://res.cloudinary.com/daa9zjpg5/image/upload/v1660283929/merado/crypto-icons/sol_cayy1y.png',
+      'https://res.cloudinary.com/daa9zjpg5/image/upload/v1660384336/merado/crypto-icons/usdt_wfrxak.png',
   },
 };
 
@@ -31,8 +25,8 @@ function classNames(...classes) {
 }
 
 export const TokenSelect = (props) => {
-  const { setFieldValue, setFieldTouched } = useFormikContext();
-  const [field, { error, touched }] = useField(props);
+  const { setFieldValue } = useFormikContext();
+  const [field] = useField(props);
 
   const [selected, setSelected] = useState(tokenOpions[0]);
 
