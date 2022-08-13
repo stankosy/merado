@@ -1,7 +1,7 @@
 import { LockClosedIcon, KeyIcon, RefreshIcon } from '@heroicons/react/outline';
 import { useWallet } from '@solana/wallet-adapter-react';
 import { useRouter } from 'next/router';
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useHeaderAnimation } from '../../hooks/useHeaderAnimation';
 import { ROUTES } from '../../routes';
 
 import { WalletMultiButton } from '../ui/multi-wallet-button';
@@ -35,15 +35,8 @@ const features = [
   },
 ];
 
-const options = {
-  root: null,
-  rootMargin: '0px',
-  threshold: 0.85,
-};
-
 export const MainSection = () => {
-  const [headerClass, setHeaderClass] = useState('bg-transparent');
-  const containerRef = useRef<HTMLDivElement>(null);
+  const [containerRef, headerClass] = useHeaderAnimation();
 
   const { push } = useRouter();
   const { connected } = useWallet();
@@ -51,30 +44,6 @@ export const MainSection = () => {
   const navigateToStartInvesting = () => push(ROUTES.START_INVESTING);
 
   const walletButtonClass = connected ? 'hidden' : 'inline-flex';
-
-  const addBgToHeader = useCallback((entries) => {
-    const [entry] = entries;
-
-    if (!entry.isIntersecting) {
-      setHeaderClass('bg-[#25153a]');
-    } else {
-      setHeaderClass('bg-transparent');
-    }
-  }, []);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(addBgToHeader, options);
-
-    if (containerRef.current) {
-      observer.observe(containerRef.current);
-    }
-
-    return () => {
-      if (containerRef.current) {
-        observer.unobserve(containerRef.current);
-      }
-    };
-  }, []);
 
   return (
     <>
