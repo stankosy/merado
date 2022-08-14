@@ -9,7 +9,7 @@ export const Header = (props) => {
 
   return (
     <header className="relative">
-      <div className={`${props.bgColor} py-3 fixed w-full z-[10000]`}>
+      <div className={`${props.bgColor} py-3 fixed w-full z-10`}>
         <nav
           className="relative max-w-7xl mx-auto flex items-center justify-between px-4 sm:px-6"
           aria-label="Global"

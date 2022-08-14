@@ -1,7 +1,10 @@
-import React, { InputHTMLAttributes, ReactElement, ReactNode } from 'react';
+import React, {
+  InputHTMLAttributes,
+  ReactElement /* , ReactNode */,
+} from 'react';
 import { useField, useFormikContext } from 'formik';
 
-import { FieldError, FieldLabel, FormControl } from '../form-control';
+import { StyledInput /* , StyledField, FieldLabel */ } from '../form-control';
 
 type InputFieldProps = InputHTMLAttributes<HTMLInputElement> & {
   name: string;
@@ -51,35 +54,27 @@ export const InputField: React.FC<InputFieldProps> = ({
     );
   };
 
-  const isInvalid = touched ? Boolean(error) : false;
+  /* const isInvalid = touched ? Boolean(error) : false; */
 
   return (
-    <FormControl isInvalid={isInvalid} isRequired={isRequired}>
-      <FieldLabel htmlFor={field.name}>{label}</FieldLabel>
-
-      <div className="mt-1 relative rounded-md shadow-sm">
-        <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-          {leftIcon || null}
-        </div>
-        <input
-          {...field}
-          {...props}
-          id={name}
-          onBlur={onBlur}
-          placeholder={placeholder}
-          autoComplete={autoComplete}
-          className={`${
-            leftIcon ? 'pl-11' : ''
-          } block w-full rounded-md shadow-sm h-11 sm:h-12 text-base sm:text-lg`}
-        />
-        {/* <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
-          <QuestionMarkCircleIcon
-            className="h-5 w-5 text-gray-400"
-            aria-hidden="true"
-          />
-        </div> */}
-      </div>
-      <FieldError>{isInvalid ? error : ''}</FieldError>
-    </FormControl>
+    <>
+      {/*  <div className="font-semibold px-2">
+        <FieldLabel htmlFor={field.name}>{label}</FieldLabel>
+      </div> */}
+      {/* <StyledField
+        isInvalid={isInvalid}
+        className="flex justify-between items-center py-1 sm:py-2 relative rounded-md shadow-sm"
+      > */}
+      <StyledInput
+        {...field}
+        {...props}
+        id={name}
+        onBlur={onBlur}
+        placeholder={placeholder}
+        autoComplete={autoComplete}
+        className="w-full font-semibold rounded-md shadow-sm bg-transparent text-base sm:text-lg text-left px-4 text-gray-400"
+      />
+      {/* </StyledField> */}
+    </>
   );
 };

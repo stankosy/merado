@@ -18,8 +18,8 @@ export const useStartInvesting = () => {
   const { publicKey, signTransaction } = useWallet();
 
   const checkTokenValidity = useCallback(
-    async ({ token, token_amount }, setErrors) => {
-      const mintAddress = getMintAddress(token);
+    async ({ token_from, amount }, setErrors) => {
+      const mintAddress = getMintAddress(token_from);
 
       if (mintAddress && publicKey && signTransaction) {
         const account = await getAssociatedTokenAccount(
@@ -34,18 +34,18 @@ export const useStartInvesting = () => {
             account.address,
           );
 
-          const hasSufficientFund = (value.uiAmount || 0) >= token_amount;
+          const hasSufficientFund = (value.uiAmount || 0) >= amount;
 
           if (hasSufficientFund) {
             return account;
           } else {
             setErrors({
-              ['token_amount']: 'Insufficient token balance',
+              ['amount']: 'Insufficient token balance',
             });
           }
         }
         setErrors({
-          ['token_amount']: 'Insufficient token balance',
+          ['amount']: 'Insufficient token balance',
         });
         // show notification
       }

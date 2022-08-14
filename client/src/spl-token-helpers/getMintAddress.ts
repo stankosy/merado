@@ -1,10 +1,16 @@
 import { WalletAdapterNetwork } from '@solana/wallet-adapter-base';
+import { NATIVE_MINT } from '@solana/spl-token';
 
-const { Devnet, Mainnet } = WalletAdapterNetwork;
+const { Mainnet } = WalletAdapterNetwork;
 
 const DEVNET_MINT_ADDRESS = {
   usdc: '4zMMC9srt5Ri5X14GAgXhaHii3GnPAEERYPJgZJDncDU',
   usdt: 'EJwZgeZrdC8TXTQbQBoL6bfuAnFUUy1PVCMB4DYPzVaS', // synthetic btc
+  eth: 'Ff5JqsAYUD4vAfQUtfRprT4nXu9e28tTBZTDFMnJNdvd',
+  ftt: '86opZkLhi6V7B5oVgBT1yGvXdKzi6MfTs65M3gHeha4p',
+  btc: 'BwhbNiZRwTKB7rz6n95SUQcMwkFYbb9cx2h6FPDHstwU',
+  chainlink: 'Bwxtq3dx3PiH9t5wKuDPwVNpYoUXSiZyEGkbD7iNGMe',
+  sol: NATIVE_MINT.toBase58(),
 };
 
 const MAINNET_MINT_ADDRESS = {

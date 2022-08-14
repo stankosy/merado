@@ -17,6 +17,7 @@ import { clusterApiUrl } from '@solana/web3.js';
 require('@solana/wallet-adapter-react-ui/styles.css');
 
 import { WalletModalProvider } from '../src/components/ui/multi-wallet-button';
+import InvestmentModalProvider from '../src/context/investment-context';
 
 function MyApp({ Component, pageProps }: AppProps) {
   // The network can be set to 'devnet', 'testnet', or 'mainnet-beta'.
@@ -38,7 +39,9 @@ function MyApp({ Component, pageProps }: AppProps) {
       <ConnectionProvider endpoint={endpoint}>
         <WalletProvider wallets={wallets} autoConnect>
           <WalletModalProvider>
-            <Component {...pageProps} />
+            <InvestmentModalProvider>
+              <Component {...pageProps} />
+            </InvestmentModalProvider>
           </WalletModalProvider>
         </WalletProvider>
       </ConnectionProvider>

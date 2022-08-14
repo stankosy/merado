@@ -1,33 +1,5 @@
-import { ReactNodeArray } from 'react';
+import { ReactNode, ReactNodeArray } from 'react';
 import styled from '@emotion/styled';
-
-const StyledField = styled.div`
-  & * {
-    &[name] {
-      border-width: ${({ isInvalid }: FormControlProps) =>
-        isInvalid ? '2px' : '0px'};
-      border-color: ${({ isInvalid }: FormControlProps) =>
-        isInvalid ? '#ff9e48' : 'transparent'};
-      outline: none;
-
-      &:focus {
-        outline: none;
-        box-shadow: none;
-      }
-
-      background-color: #25153a;
-      color: #fff;
-    }
-  }
-
-  & > div > label {
-    &:after {
-      content: ${({ isRequired }: FormControlProps) =>
-        isRequired ? `" *"` : ''};
-      color: #ff4293;
-    }
-  }
-`;
 
 const StyledLabel = styled.div`
   margin: 0.5em 0;
@@ -45,21 +17,29 @@ const StyledError = styled.div`
 
 interface FormControlProps {
   isInvalid: boolean;
-  isRequired: boolean | undefined;
-  children: ReactNodeArray;
+  children: ReactNode | ReactNode[];
 }
 
-export const FormControl: React.FC<FormControlProps> = ({
-  isInvalid,
-  isRequired,
-  children,
-}) => {
-  return (
-    <StyledField isInvalid={isInvalid} isRequired={isRequired}>
-      {children}
-    </StyledField>
-  );
-};
+export const StyledInput = styled.input`
+    border-width:0px;
+    border-color: transparent;
+    outline: none;
+
+    &:focus {
+        outline: none;
+        box-shadow: none;
+    }
+}
+`;
+
+export const StyledField = styled.div`
+  border-width: ${({ isInvalid }: FormControlProps) =>
+    isInvalid ? '2px' : '0px'};
+  border-color: ${({ isInvalid }: FormControlProps) =>
+    isInvalid ? '#ff9e48' : 'transparent'};
+
+  background-color: #25153a;
+`;
 
 interface FieldLabelProps {
   children: string | undefined;

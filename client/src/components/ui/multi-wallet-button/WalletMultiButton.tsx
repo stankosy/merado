@@ -8,6 +8,7 @@ import React, {
   useRef,
   useState,
 } from 'react';
+import { useInvestment } from '../../../context/investment-context';
 import { ROUTES } from '../../../routes';
 import type { ButtonProps } from './Button';
 import { Button } from './Button';
@@ -23,13 +24,15 @@ const classNameWalletButton =
   'shadow text-white font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#ff9e48] focus:ring-offset-gray-900';
 
 export const WalletMultiButton: FC<ButtonProps> = ({ children, ...props }) => {
+  const { onOpen } = useInvestment();
+
   const { publicKey, wallet, disconnect, connected, connecting } = useWallet();
   const { setVisible } = useWalletModal();
   const [copied, setCopied] = useState(false);
   const [active, setActive] = useState(false);
   const ref = useRef<HTMLUListElement>(null);
 
-  const { push } = useRouter();
+  const { push, pathname } = useRouter();
 
   const base58 = useMemo(() => publicKey?.toBase58(), [publicKey]);
   const content = useMemo(() => {
@@ -69,7 +72,11 @@ export const WalletMultiButton: FC<ButtonProps> = ({ children, ...props }) => {
   }, [closeDropdown]);
 
   const navigateToStartInvesting = useCallback(() => {
-    push(ROUTES.START_INVESTING);
+    if (pathname === ROUTES.START_INVESTING) {
+      onOpen();
+    } else {
+      push(ROUTES.START_INVESTING);
+    }
 
     closeDropdown();
   }, [closeDropdown]);
