@@ -89,6 +89,7 @@ export const StartInvesting = () => {
             createdAt: new Date().toLocaleDateString(),
             id: investments.length + 1,
             status: true,
+            progess: 0,
           });
 
           onClose();
@@ -100,22 +101,6 @@ export const StartInvesting = () => {
       .finally(() => {
         setLoading(false);
       });
-
-    /* const validWalletTokenAccount = await checkTokenValidity(values, setErrors);
-
-    if (validWalletTokenAccount) {
-      const meradoTokenAccount = await getOrCreateTokenAccount(values.token);
-
-      if (validWalletTokenAccount && meradoTokenAccount) {
-        await executeTokenTransfer(
-          validWalletTokenAccount,
-          meradoTokenAccount,
-          values.token_amount,
-        );
-
-        resetForm();
-      }
-    } */
   };
 
   return (

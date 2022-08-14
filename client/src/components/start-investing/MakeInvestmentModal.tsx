@@ -2,7 +2,6 @@ import { Fragment } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
 import { useWallet } from '@solana/wallet-adapter-react';
 import { XIcon } from '@heroicons/react/solid';
-import { Loader } from '../ui/loader';
 
 export const MakeInvestmentModal = ({ children, open = false, onClose }) => {
   const { connected } = useWallet();
