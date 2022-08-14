@@ -36,7 +36,7 @@ const features = [
 ];
 
 export const MainSection = () => {
-  const [containerRef, headerClass] = useHeaderAnimation();
+  const [headerClass] = useHeaderAnimation(80);
 
   const { push } = useRouter();
   const { connected } = useWallet();
@@ -49,17 +49,14 @@ export const MainSection = () => {
     <>
       <Header bgColor={headerClass} />
       <main>
-        <div
-          ref={containerRef}
-          className="pt-14 bg-gradient-radial-at-br from-[#572d7f] to-[#100919] sm:pt-12 lg:pt-12 lg:pb-14 lg:overflow-hidden"
-        >
+        <div className="pt-14 bg-gradient-radial-at-br from-[#572d7f] to-[#100919] sm:pt-12 lg:pt-12 lg:pb-14 lg:overflow-hidden">
           {/** Header component */}
           {/* <Header /> */}
 
           {/* 1st section with image */}
           <div className="mx-auto max-w-7xl lg:px-8 mt-10 pt-14">
             <div className="lg:grid lg:grid-cols-2 lg:gap-8">
-              <div className="mx-auto max-w-md px-4 sm:max-w-2xl sm:px-6 sm:text-center lg:px-0 lg:text-left lg:flex lg:items-center">
+              <div className="mx-auto max-w-md pt-4 px-4 sm:max-w-2xl sm:px-6 sm:text-center lg:px-0 lg:text-left lg:flex lg:items-center">
                 <div className="lg:py-24">
                   {/* <div className="">
                   <span className="sr-only">Merado</span>

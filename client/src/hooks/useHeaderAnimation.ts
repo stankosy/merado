@@ -1,41 +1,23 @@
-import { useState, useRef, useCallback, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
-const defaultOptions = {
-  root: null,
-  rootMargin: '0px',
-  threshold: 0.85,
-};
-
-export const useHeaderAnimation = (options = {}) => {
+export const useHeaderAnimation = (threshold = 80) => {
   const [headerClass, setHeaderClass] = useState('bg-transparent');
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  const addBgToHeader = useCallback((entries) => {
-    const [entry] = entries;
-
-    if (!entry.isIntersecting) {
-      setHeaderClass('bg-[#25153a]');
-    } else {
-      setHeaderClass('bg-transparent');
-    }
-  }, []);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(addBgToHeader, {
-      ...defaultOptions,
-      ...options,
-    });
+    const onScroll = (e) => {
+      const amountScrolled = window.pageYOffset;
 
-    if (containerRef.current) {
-      observer.observe(containerRef.current);
-    }
-
-    return () => {
-      if (containerRef.current) {
-        observer.unobserve(containerRef.current);
+      if (amountScrolled > threshold) {
+        setHeaderClass('bg-[#25153a]');
+      } else {
+        setHeaderClass('bg-transparent');
       }
     };
+
+    window.addEventListener('scroll', onScroll);
+
+    return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  return [containerRef, headerClass];
+  return [headerClass];
 };
