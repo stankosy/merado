@@ -9,7 +9,7 @@ const STATUS_COLOR = {
 
 export const InvestmentStatus = ({ status }) => {
   return (
-    <div className="inline-flex items-center pl-3 pr-0 sm:pr-3 py-0.5 rounded-md text-xs sm:text-sm font-medium">
+    <div className="inline-flex items-center pr-0 sm:pr-3 py-0.5 rounded-md text-xs sm:text-sm font-medium">
       <svg
         className="-ml-1 mr-1.5 h-3 w-3"
         fill="currentColor"
