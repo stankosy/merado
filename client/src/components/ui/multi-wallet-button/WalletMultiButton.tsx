@@ -149,7 +149,7 @@ export const WalletMultiButton: FC<ButtonProps> = ({ children, ...props }) => {
           style={{ pointerEvents: active ? 'none' : 'auto', marginLeft: 10 }}
           onClick={navigateToStartInvesting}
         >
-          {onInvestmentPage ? 'Create Investment' : 'Start Investing'}
+          {onInvestmentPage ? 'Create Plan' : 'Start Investing'}
         </Button>
       ) : null}
 
@@ -166,7 +166,7 @@ export const WalletMultiButton: FC<ButtonProps> = ({ children, ...props }) => {
           className="wallet-adapter-dropdown-list-item"
           role="menuitem"
         >
-          {onInvestmentPage ? 'Create Investment' : 'Start Investing'}
+          {onInvestmentPage ? 'Create Plan' : 'Start Investing'}
         </li>
         <li
           onClick={copyAddress}

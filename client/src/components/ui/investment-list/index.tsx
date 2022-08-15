@@ -43,7 +43,7 @@ export const InvestmentList = () => {
                                 onClick={onOpen}
                                 className="block w-full py-3 px-4 rounded-md shadow hover:shadow-xl bg-gradient-to-r from-[#ff4293] to-[#ff9e48] text-white font-medium hover:from-[#ff4293] hover:to-[#ff9e48] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-transparent focus:ring-offset-transparent"
                               >
-                                Create Investment
+                                Create Plan
                               </button>
                             ) : (
                               <WalletMultiButton />
