@@ -91,7 +91,7 @@ export const StartInvesting = () => {
 
               addInvestment({
                 ...values,
-                createdAt: new Date().toLocaleDateString(),
+                createdAt: new Date(),
                 id: investments.length + 1,
                 status: ACTIVE,
                 progress: 0,

@@ -21,7 +21,7 @@ export const InvestmentPlan = ({ values }) => {
     >
       <div className="flex items-center rounded-md mt-4 sm:mt-8 bg-[#25153a] border-2 border-[#ff9e48] font-medium sm:font-semibold">
         <div className="text-xs sm:text-sm text-[#ff9e48] py-2 px-2 sm:px-3 w-full text-center">
-          <span>Swap</span>
+          <span>Swap {values.amount}</span>
           <span className="mx-2">
             <img
               className="inline-block h-4 w-4 sm:h-6 sm:w-6 rounded-full"
@@ -39,14 +39,9 @@ export const InvestmentPlan = ({ values }) => {
           </span>{' '}
           <span>{`in ${values.lots} lot${
             values.lots > 1 ? 's' : ''
-          } of ${roundOf(values.amount / values.lots)}`}</span>
-          <span className="mx-2">
-            <img
-              className="inline-block h-4 w-4 sm:h-6 sm:w-6 rounded-full"
-              src={ALL_TOKENS[values.token_from]?.iconUrl}
-              alt=""
-            />
-          </span>
+          } of ${roundOf(values.amount / values.lots)} ${
+            ALL_TOKENS[values.token_from]?.title
+          }`}</span>
         </div>
       </div>
     </Transition>
