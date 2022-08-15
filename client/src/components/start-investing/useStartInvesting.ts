@@ -75,7 +75,7 @@ export const useStartInvesting = () => {
   const executeTokenTransfer = useCallback(
     async (fromTokenAccount, toTokenAccount, amount) => {
       if (publicKey && signTransaction) {
-        await transferTokens(
+        const tx = await transferTokens(
           connection,
           fromTokenAccount.address,
           toTokenAccount.address,
@@ -83,6 +83,8 @@ export const useStartInvesting = () => {
           BigInt(amount * 1e6),
           signTransaction,
         );
+
+        return tx;
       }
     },
     [connection, publicKey, signTransaction],

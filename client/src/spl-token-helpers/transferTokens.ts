@@ -33,7 +33,10 @@ export const transferTokens = async (
     const response = await connection.sendRawTransaction(signed.serialize());
 
     console.log({ response });
+
+    return response;
   } catch (e) {
     console.error('Error transferring tokens: ', e);
+    throw new Error('Error transferring tokens');
   }
 };

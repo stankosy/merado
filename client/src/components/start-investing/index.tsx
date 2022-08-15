@@ -63,7 +63,7 @@ export const StartInvesting = () => {
   const { checkTokenValidity, getOrCreateTokenAccount, executeTokenTransfer } =
     useStartInvesting();
 
-  const onSubmit = async (values, { setSubmitting, setErrors }) => {
+  const onSubmit = async (values, { setErrors }) => {
     setLoading(true);
 
     schema
@@ -80,30 +80,32 @@ export const StartInvesting = () => {
           );
 
           if (validWalletTokenAccount && meradoTokenAccount) {
-            await executeTokenTransfer(
+            const tx = await executeTokenTransfer(
               validWalletTokenAccount,
               meradoTokenAccount,
               values.amount,
             );
 
-            sleep(3000);
+            if (tx) {
+              await sleep(3000);
 
-            addInvestment({
-              ...values,
-              createdAt: new Date().toLocaleDateString(),
-              id: investments.length + 1,
-              status: ACTIVE,
-              progress: 0,
-            });
+              addInvestment({
+                ...values,
+                createdAt: new Date().toLocaleDateString(),
+                id: investments.length + 1,
+                status: ACTIVE,
+                progress: 0,
+              });
 
-            onClose();
+              onClose();
+            }
           }
 
           // onClose();
         }
       })
-      .catch(() => {
-        setSubmitting(false);
+      .catch((e) => {
+        console.log(e);
       })
       .finally(() => {
         setLoading(false);

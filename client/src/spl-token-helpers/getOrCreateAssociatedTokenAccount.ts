@@ -43,6 +43,8 @@ export const getAssociatedTokenAccount = async (
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (error: unknown) {
     console.log('Failed to get associated token account');
+
+    throw new Error('Failed to get associated token account');
   }
 
   return account;
@@ -98,6 +100,8 @@ export const createAssociatedTokenAccount = async (
     );
   } catch (error: unknown) {
     console.log('Failed to create associated token account');
+
+    throw new Error('Failed to create associated token account');
     // Ignore all errors; for now there is no API-compatible way to selectively ignore the expected
     // instruction error if the associated account exists already.
   }
