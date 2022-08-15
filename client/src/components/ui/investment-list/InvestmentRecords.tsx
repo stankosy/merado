@@ -1,4 +1,7 @@
 import { ALL_TOKENS } from '../../../constants/tokenList';
+import { formatDate } from '../../../utils/string-helpers';
+import { ProgressBar } from '../progress-bar';
+import { InvestmentStatus } from './InvestmentStatus';
 
 export const InvestmentRecords = ({ investment }) => {
   return (
@@ -9,28 +12,21 @@ export const InvestmentRecords = ({ investment }) => {
       <td className="table-cell sm:hidden whitespace-nowrap py-4 pl-4 pr-4 text-sm sm:pl-6">
         <div className="w-full flex flex-col">
           <div className="w-full flex items-center justify-between text-xs mb-4">
-            <div>{investment.createdAt}</div>
-            <div>
-              <svg
-                className="-ml-1 mr-1.5 h-2 w-2 text-green-500"
-                fill="currentColor"
-                viewBox="0 0 8 8"
-                style={{
-                  color: investment.status ? '#10b981' : '#f43f5e',
-                }}
-              >
-                <circle cx={4} cy={4} r={3} />
-              </svg>
-            </div>
+            <div>{formatDate(new Date(investment.createdAt))}</div>
+            <InvestmentStatus status={investment.status} />
           </div>
           <div className="w-full flex items-center justify-between">
             <div className="flex items-center">
-              <img
-                className="h-5 w-5 rounded-full"
-                src={ALL_TOKENS[investment.token_to].iconUrl}
-                alt=""
-              />
-              <span className="ml-2">{investment.amount}</span>
+              <div className="flex-shrink-0">
+                <img
+                  className="h-5 w-5 rounded-full"
+                  src={ALL_TOKENS[investment.token_from].iconUrl}
+                  alt=""
+                />
+              </div>
+              <div className="ml-2">
+                {investment.amount} {ALL_TOKENS[investment.token_from].title}
+              </div>
             </div>
             <div>
               <svg
@@ -48,21 +44,26 @@ export const InvestmentRecords = ({ investment }) => {
                 />
               </svg>
             </div>
-            <img
-              className="h-5 w-5 rounded-full"
-              src={ALL_TOKENS[investment.token_to].iconUrl}
-              alt=""
-            />
+            <div className="flex items-center">
+              <div className="flex-shrink-0">
+                <img
+                  className="h-5 w-5 rounded-full"
+                  src={ALL_TOKENS[investment.token_to].iconUrl}
+                  alt=""
+                />
+              </div>
+              <div className="ml-2">
+                {ALL_TOKENS[investment.token_to].title}
+              </div>
+            </div>
           </div>
           <div className="mt-4 text-xs">
-            {`${
-              investment.progress
-            }% completed as of ${new Date().toLocaleDateString()}`}
+            <ProgressBar progress={investment.progress} />
           </div>
         </div>
       </td>
       <td className="hidden sm:table-cell whitespace-nowrap py-4 pl-4 pr-3 text-sm sm:pl-6">
-        {investment.createdAt}
+        {formatDate(new Date(investment.createdAt))}
       </td>
       <td className="hidden sm:table-cell whitespace-nowrap px-3 py-4 text-sm">
         <div className="flex items-center">
@@ -91,22 +92,10 @@ export const InvestmentRecords = ({ investment }) => {
         </div>
       </td>
       <td className="hidden sm:table-cell whitespace-nowrap px-3 py-4 text-sm">
-        <div className="w-full inline-flex items-center px-3 py-0.5 rounded-md text-sm font-medium">
-          <svg
-            className="-ml-1 mr-1.5 h-2 w-2 text-green-500"
-            fill="currentColor"
-            viewBox="0 0 8 8"
-            style={{
-              color: investment.status ? '#10b981' : '#f43f5e',
-            }}
-          >
-            <circle cx={4} cy={4} r={3} />
-          </svg>
-          <span>{investment.status ? 'Active' : 'Inactive'}</span>
-        </div>
+        <InvestmentStatus status={investment.status} />
       </td>
       <td className="hidden sm:table-cell whitespace-nowrap px-3 py-4 text-sm">
-        {investment.progress}
+        <ProgressBar progress={investment.progress} />
       </td>
       <td className="hidden sm:table-cell relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
         <div className="cursor-pointer hover:text-[#ff4293] transition">

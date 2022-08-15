@@ -34,6 +34,8 @@ export const WalletMultiButton: FC<ButtonProps> = ({ children, ...props }) => {
 
   const { push, pathname } = useRouter();
 
+  const onInvestmentPage = pathname === ROUTES.START_INVESTING;
+
   const base58 = useMemo(() => publicKey?.toBase58(), [publicKey]);
   const content = useMemo(() => {
     if (connected) return null;
@@ -72,7 +74,7 @@ export const WalletMultiButton: FC<ButtonProps> = ({ children, ...props }) => {
   }, [closeDropdown]);
 
   const navigateToStartInvesting = useCallback(() => {
-    if (pathname === ROUTES.START_INVESTING) {
+    if (onInvestmentPage) {
       onOpen();
     } else {
       push(ROUTES.START_INVESTING);
@@ -147,7 +149,7 @@ export const WalletMultiButton: FC<ButtonProps> = ({ children, ...props }) => {
           style={{ pointerEvents: active ? 'none' : 'auto', marginLeft: 10 }}
           onClick={navigateToStartInvesting}
         >
-          Start Investing
+          {onInvestmentPage ? 'Create Investment' : 'Start Investing'}
         </Button>
       ) : null}
 
@@ -164,7 +166,7 @@ export const WalletMultiButton: FC<ButtonProps> = ({ children, ...props }) => {
           className="wallet-adapter-dropdown-list-item"
           role="menuitem"
         >
-          Start Investing
+          {onInvestmentPage ? 'Create Investment' : 'Start Investing'}
         </li>
         <li
           onClick={copyAddress}

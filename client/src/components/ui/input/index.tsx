@@ -1,10 +1,7 @@
-import React, {
-  InputHTMLAttributes,
-  ReactElement /* , ReactNode */,
-} from 'react';
+import React, { InputHTMLAttributes, ReactNode } from 'react';
 import { useField, useFormikContext } from 'formik';
 
-import { StyledInput /* , StyledField, FieldLabel */ } from '../form-control';
+import { StyledInput } from '../form-control';
 
 type InputFieldProps = InputHTMLAttributes<HTMLInputElement> & {
   name: string;
@@ -15,7 +12,8 @@ type InputFieldProps = InputHTMLAttributes<HTMLInputElement> & {
   isRequired?: boolean;
   formatter?(value: string): string;
   validate?: (value: any) => string | undefined;
-  leftIcon?: ReactElement | null;
+  leftIcon?: ReactNode | null;
+  rightIcon?: ReactNode | null;
   formatOptions?: {
     on: 'blur' | 'change';
   };
@@ -30,6 +28,7 @@ export const InputField: React.FC<InputFieldProps> = ({
   isRequired = false,
   formatOptions = { on: 'change' },
   leftIcon,
+  rightIcon,
   ...props
 }) => {
   const { setFieldValue, setFieldTouched } = useFormikContext();
@@ -57,24 +56,14 @@ export const InputField: React.FC<InputFieldProps> = ({
   /* const isInvalid = touched ? Boolean(error) : false; */
 
   return (
-    <>
-      {/*  <div className="font-semibold px-2">
-        <FieldLabel htmlFor={field.name}>{label}</FieldLabel>
-      </div> */}
-      {/* <StyledField
-        isInvalid={isInvalid}
-        className="flex justify-between items-center py-1 sm:py-2 relative rounded-md shadow-sm"
-      > */}
-      <StyledInput
-        {...field}
-        {...props}
-        id={name}
-        onBlur={onBlur}
-        placeholder={placeholder}
-        autoComplete={autoComplete}
-        className="w-full font-semibold rounded-md shadow-sm bg-transparent text-base sm:text-lg text-left px-4 text-gray-400"
-      />
-      {/* </StyledField> */}
-    </>
+    <StyledInput
+      {...field}
+      {...props}
+      id={name}
+      onBlur={onBlur}
+      placeholder={placeholder}
+      autoComplete={autoComplete}
+      className="w-full font-semibold rounded-md shadow-sm bg-transparent text-base sm:text-lg text-left px-4 text-gray-400"
+    />
   );
 };

@@ -1,3 +1,5 @@
+import { ALL_STATUS } from '../../../constants/investmentStatus';
+
 export const mock = [
   {
     id: 1,
@@ -5,7 +7,7 @@ export const mock = [
     amount: 199,
     token_from: 'usdc',
     token_to: 'chainlink',
-    status: true,
+    status: ALL_STATUS.ACTIVE,
     progress: 32,
   },
   {
@@ -14,7 +16,7 @@ export const mock = [
     amount: 883,
     token_from: 'usdc',
     token_to: 'btc',
-    status: true,
+    status: ALL_STATUS.PAUSED,
     progress: 14,
   },
   {
@@ -23,7 +25,7 @@ export const mock = [
     amount: 48,
     token_from: 'usdt',
     token_to: 'btc',
-    status: false,
+    status: ALL_STATUS.ACTIVE,
     progress: 33,
   },
   {
@@ -32,8 +34,8 @@ export const mock = [
     amount: 54,
     token_from: 'usdc',
     token_to: 'sol',
-    status: false,
-    progress: 65,
+    status: ALL_STATUS.COMPLETE,
+    progress: 100,
   },
   {
     id: 5,
@@ -41,7 +43,7 @@ export const mock = [
     amount: 133,
     token_from: 'usdc',
     token_to: 'sol',
-    status: true,
+    status: ALL_STATUS.ACTIVE,
     progress: 41,
   },
   {
@@ -50,7 +52,7 @@ export const mock = [
     amount: 782,
     token_from: 'usdt',
     token_to: 'ftt',
-    status: true,
+    status: ALL_STATUS.ACTIVE,
     progress: 6,
   },
   {
@@ -59,7 +61,7 @@ export const mock = [
     amount: 870,
     token_from: 'usdc',
     token_to: 'btc',
-    status: false,
+    status: ALL_STATUS.PAUSED,
     progress: 92,
   },
   {
@@ -68,7 +70,7 @@ export const mock = [
     amount: 854,
     token_from: 'usdt',
     token_to: 'chainlink',
-    status: false,
+    status: ALL_STATUS.ACTIVE,
     progress: 46,
   },
   {
@@ -77,7 +79,7 @@ export const mock = [
     amount: 617,
     token_from: 'usdt',
     token_to: 'sol',
-    status: true,
+    status: ALL_STATUS.ACTIVE,
     progress: 20,
   },
   {
@@ -86,7 +88,7 @@ export const mock = [
     amount: 377,
     token_from: 'usdt',
     token_to: 'chainlink',
-    status: true,
+    status: ALL_STATUS.PAUSED,
     progress: 10,
   },
 ];

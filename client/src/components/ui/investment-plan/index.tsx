@@ -20,26 +20,33 @@ export const InvestmentPlan = ({ values }) => {
       leaveTo="opacity-0"
     >
       <div className="flex items-center rounded-md mt-4 sm:mt-8 bg-[#25153a] border-2 border-[#ff9e48] font-medium sm:font-semibold">
-        <div className="flex">
-          <div className="text-xs sm:text-sm text-[#ff9e48] py-2 px-3 sm:px-3">
-            <span>{`Swap ${values.amount}`}</span>
-            <span className="mx-2">
-              <img
-                className="inline-block h-4 w-4 sm:h-6 sm:w-6 rounded-full"
-                src={ALL_TOKENS[values.token_from]?.iconUrl}
-                alt=""
-              />
-            </span>
-            with
-            <span className="mx-2">
-              <img
-                className="inline-block h-4 w-4 sm:h-6 sm:w-6 rounded-full"
-                src={ALL_TOKENS[values.token_to]?.iconUrl}
-                alt=""
-              />
-            </span>{' '}
-            <span>{`in lots of ${roundOf(values.amount / values.lots)}`}</span>
-          </div>
+        <div className="text-xs sm:text-sm text-[#ff9e48] py-2 px-2 sm:px-3 w-full text-center">
+          <span>Swap</span>
+          <span className="mx-2">
+            <img
+              className="inline-block h-4 w-4 sm:h-6 sm:w-6 rounded-full"
+              src={ALL_TOKENS[values.token_from]?.iconUrl}
+              alt=""
+            />
+          </span>
+          for
+          <span className="mx-2">
+            <img
+              className="inline-block h-4 w-4 sm:h-6 sm:w-6 rounded-full"
+              src={ALL_TOKENS[values.token_to]?.iconUrl}
+              alt=""
+            />
+          </span>{' '}
+          <span>{`in ${values.lots} lot${
+            values.lots > 1 ? 's' : ''
+          } of ${roundOf(values.amount / values.lots)}`}</span>
+          <span className="mx-2">
+            <img
+              className="inline-block h-4 w-4 sm:h-6 sm:w-6 rounded-full"
+              src={ALL_TOKENS[values.token_from]?.iconUrl}
+              alt=""
+            />
+          </span>
         </div>
       </div>
     </Transition>

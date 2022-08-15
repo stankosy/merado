@@ -7,6 +7,7 @@ import { MakeDepositForm } from './MakeInvestmentForm';
 import { MakeInvestmentModal } from './MakeInvestmentModal';
 
 import { useStartInvesting } from './useStartInvesting';
+import { ACTIVE } from '../../constants/investmentStatus';
 
 const initialValues = {
   token_to: '',
@@ -14,6 +15,8 @@ const initialValues = {
   lots: '',
   amount: '',
 };
+
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
 const REQUIRED_FIELD = 'Required field';
 
@@ -82,17 +85,21 @@ export const StartInvesting = () => {
               meradoTokenAccount,
               values.amount,
             );
+
+            sleep(3000);
+
+            addInvestment({
+              ...values,
+              createdAt: new Date().toLocaleDateString(),
+              id: investments.length + 1,
+              status: ACTIVE,
+              progress: 0,
+            });
+
+            onClose();
           }
 
-          addInvestment({
-            ...values,
-            createdAt: new Date().toLocaleDateString(),
-            id: investments.length + 1,
-            status: true,
-            progess: 0,
-          });
-
-          onClose();
+          // onClose();
         }
       })
       .catch(() => {

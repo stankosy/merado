@@ -3,6 +3,10 @@ import { StyledField, FieldLabel } from '../form-control';
 import { InputField } from '../input';
 
 export const AmountAndLotsInput = ({ values }) => {
+  const formatTokenAmount = (amount) => {
+    return `${amount} ${ALL_TOKENS[values.token_from].title}`;
+  };
+
   return (
     <>
       <div className="w-full flex justify-between items-center px-2 font-semibold">

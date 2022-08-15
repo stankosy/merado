@@ -5,7 +5,7 @@ export const InvestmentFields = () => {
         scope="col"
         className="table-cell sm:hidden py-3.5 pl-4 pr-3 text-left text-sm font-semibold sm:pl-6"
       >
-        Investments
+        Investment Plans
       </th>
       <th
         scope="col"
@@ -35,7 +35,7 @@ export const InvestmentFields = () => {
         scope="col"
         className="hidden sm:table-cell px-3 py-3.5 text-left text-sm font-semibold "
       >
-        {'Progress (%)'}
+        Progress
       </th>
       <th
         scope="col"

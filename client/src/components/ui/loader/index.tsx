@@ -10,11 +10,7 @@ const bounedelay = keyframes`
 `;
 
 export const Wrapper = styled.div`
-  display: flex;
-  justify-content: space-between;
-  margin: 0px auto;
   width: 80px;
-  text-align: center;
 `;
 
 interface BoxProps {
@@ -32,14 +28,33 @@ export const Box = styled.div`
   animation-delay: ${(props: BoxProps) => `${-0.32 + props.index * 0.16}s`};
 `;
 
+interface LoaderProps {
+  theme: 'dark' | 'light';
+  size: 'sm' | 'md' | 'lg';
+}
+
+const SIZE_MAP = {
+  sm: '2',
+  md: '4',
+  lg: '6',
+};
+
 export const Loader = (props) => {
+  const { theme = 'dark', size = 'sm' } = props;
+
+  const bgColor = theme === 'dark' ? '#49266a' : '#ff9e48';
+  const sizeDim = SIZE_MAP[size];
+
   return (
-    <Wrapper {...props}>
+    <Wrapper
+      {...props}
+      className="flex justify-center items-center text-center my-2 mx-auto"
+    >
       {[0, 1, 2].map((elem) => (
         <Box
           key={`Loading-Box-${elem}`}
           index={elem}
-          className="bg-[#ff9e48] rounded-full w-2 h-2"
+          className={`bg-[${bgColor}] rounded-full w-${sizeDim} h-${sizeDim}`}
         />
       ))}
     </Wrapper>

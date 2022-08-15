@@ -32,10 +32,10 @@ export const InvestmentList = () => {
                       <td colSpan={6}>
                         <div className="text-center pb-10 pt-20 px-15 text-[#ff9e48]">
                           <h3 className="mt-2 text-sm font-medium ">
-                            No investments
+                            No current investments.
                           </h3>
                           <p className="mt-1 text-sm ">
-                            Get started by creating a new investment.
+                            Get started by creating a new investment plan.
                           </p>
                           <div className="mt-6 max-w-md mx-auto px-6">
                             {connected ? (
@@ -43,7 +43,7 @@ export const InvestmentList = () => {
                                 onClick={onOpen}
                                 className="block w-full py-3 px-4 rounded-md shadow hover:shadow-xl bg-gradient-to-r from-[#ff4293] to-[#ff9e48] text-white font-medium hover:from-[#ff4293] hover:to-[#ff9e48] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-transparent focus:ring-offset-transparent"
                               >
-                                Start Investing
+                                Create Investment
                               </button>
                             ) : (
                               <WalletMultiButton />

@@ -4,7 +4,7 @@ import { NATIVE_MINT } from '@solana/spl-token';
 const { Mainnet } = WalletAdapterNetwork;
 
 const DEVNET_MINT_ADDRESS = {
-  usdc: '4zMMC9srt5Ri5X14GAgXhaHii3GnPAEERYPJgZJDncDU',
+  usdc: 'Gh9ZwEmdLJ8DscKNTkTqPbNwLNNBjuSzaG9Vp2KGtKJr',
   usdt: 'EJwZgeZrdC8TXTQbQBoL6bfuAnFUUy1PVCMB4DYPzVaS', // synthetic btc
   eth: 'Ff5JqsAYUD4vAfQUtfRprT4nXu9e28tTBZTDFMnJNdvd',
   ftt: '86opZkLhi6V7B5oVgBT1yGvXdKzi6MfTs65M3gHeha4p',
