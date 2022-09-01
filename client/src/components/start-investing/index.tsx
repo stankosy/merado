@@ -8,6 +8,7 @@ import { MakeInvestmentModal } from './MakeInvestmentModal';
 
 import { useStartInvesting } from './useStartInvesting';
 import { ACTIVE } from '../../constants/investmentStatus';
+import { showError, showSuccess } from '../ui/message';
 
 const initialValues = {
   token_to: '',
@@ -98,6 +99,8 @@ export const StartInvesting = () => {
               });
 
               onClose();
+
+              showSuccess('Investment completed successfully');
             }
           }
 
@@ -105,7 +108,9 @@ export const StartInvesting = () => {
         }
       })
       .catch((e) => {
-        console.log(e);
+        showError(
+          'Something went wrong, please contact support at contact@merado.io',
+        );
       })
       .finally(() => {
         setLoading(false);

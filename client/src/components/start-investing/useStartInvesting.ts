@@ -10,6 +10,7 @@ import {
 } from '../../spl-token-helpers/getOrCreateAssociatedTokenAccount';
 import { transferTokens } from '../../spl-token-helpers/transferTokens';
 import idl from '../../../idl.json';
+import { showError } from '../ui/message';
 
 const programId = new PublicKey(idl.metadata.address);
 
@@ -39,14 +40,18 @@ export const useStartInvesting = () => {
           if (hasSufficientFund) {
             return account;
           } else {
+            showError('Insufficient token balance');
             setErrors({
               ['amount']: 'Insufficient token balance',
             });
           }
+        } else {
+          showError('Insufficient token balance');
+          setErrors({
+            ['amount']: 'Insufficient token balance',
+          });
         }
-        setErrors({
-          ['amount']: 'Insufficient token balance',
-        });
+
         // show notification
       }
     },
