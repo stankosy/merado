@@ -44,7 +44,7 @@ export const getAssociatedTokenAccount = async (
   } catch (error: unknown) {
     console.log('Failed to get associated token account');
 
-    throw new Error('Failed to get associated token account');
+    // throw new Error('Failed to get associated token account');
   }
 
   return account;
@@ -83,7 +83,7 @@ export const createAssociatedTokenAccount = async (
       ),
     );
 
-    const blockHash = await connection.getRecentBlockhash();
+    const blockHash = await connection.getLatestBlockhash();
     transaction.feePayer = await payer;
     transaction.recentBlockhash = await blockHash.blockhash;
     const signed = await signTransaction(transaction);
